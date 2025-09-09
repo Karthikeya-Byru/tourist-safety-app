@@ -1,0 +1,718 @@
+/* iOS-Inspired Tourist Safety System UI */
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #f5576c 75%, 
+    #4facfe 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Mobile First - Base styles for mobile */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 0 15px !important;
+  }
+}
+
+.App {
+  min-height: 100vh;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  h4 { font-size: 1.1rem; }
+  h5 { font-size: 1rem; }
+  
+  .display-4 { font-size: 2rem; }
+  .lead { font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.2rem; }
+  
+  .display-4 { font-size: 1.8rem; }
+  .lead { font-size: 1rem; }
+}
+
+/* iOS Color Scheme */
+:root {
+  --ios-blue: #007AFF;
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+  --ios-yellow: #FFCC00;
+  --ios-purple: #AF52DE;
+  --ios-pink: #FF2D92;
+  --ios-teal: #5AC8FA;
+  --ios-indigo: #5856D6;
+  --ios-gray: #8E8E93;
+  --ios-gray2: #AEAEB2;
+  --ios-gray3: #C7C7CC;
+  --ios-gray4: #D1D1D6;
+  --ios-gray5: #E5E5EA;
+  --ios-gray6: #F2F2F7;
+  --ios-background: rgba(255, 255, 255, 0.8);
+  --ios-background-secondary: rgba(255, 255, 255, 0.6);
+  --ios-blur: blur(20px);
+  --ios-border-radius: 20px;
+  --ios-border-radius-small: 12px;
+  --ios-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  --ios-shadow-large: 0 8px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* iOS-Style Cards */
+.card {
+  border: none;
+  border-radius: var(--ios-border-radius);
+  background: var(--ios-background);
+  backdrop-filter: var(--ios-blur);
+  box-shadow: var(--ios-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--ios-shadow-large);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Mobile responsive cards */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 15px;
+    border-radius: 12px;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .card-body {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 0.75rem !important;
+  }
+}
+
+.card-ios-gradient {
+  background: linear-gradient(135deg, 
+    rgba(255, 154, 158, 0.8) 0%, 
+    rgba(254, 207, 239, 0.8) 25%, 
+    rgba(168, 237, 234, 0.8) 75%, 
+    rgba(135, 206, 235, 0.8) 100%);
+  color: #1d1d1f;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-glass-ios {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: var(--ios-blur);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #1d1d1f;
+}
+
+/* iOS Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, 
+    rgba(0, 122, 255, 0.9) 0%, 
+    rgba(175, 82, 222, 0.9) 25%,
+    rgba(255, 45, 146, 0.9) 50%,
+    rgba(255, 149, 0, 0.9) 75%,
+    rgba(52, 199, 89, 0.9) 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: var(--ios-border-radius);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: var(--ios-blur);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile responsive hero section */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+  }
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* iOS Feature Cards */
+.feature-card {
+  border: none;
+  border-radius: var(--ios-border-radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: var(--ios-background);
+  backdrop-filter: var(--ios-blur);
+  box-shadow: var(--ios-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mobile responsive feature cards */
+@media (max-width: 768px) {
+  .feature-card {
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card {
+    padding: 1rem 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.feature-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: var(--ios-shadow-large);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.feature-card .icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Mobile responsive feature card icons */
+@media (max-width: 768px) {
+  .feature-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-card .icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.feature-card.emergency {
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, var(--ios-background) 100%);
+  border-left: 4px solid var(--ios-red);
+}
+
+.feature-card.safety {
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.1) 0%, var(--ios-background) 100%);
+  border-left: 4px solid var(--ios-green);
+}
+
+.feature-card.incidents {
+  background: linear-gradient(135deg, rgba(90, 200, 250, 0.1) 0%, var(--ios-background) 100%);
+  border-left: 4px solid var(--ios-teal);
+}
+
+.feature-card.zones {
+  background: linear-gradient(135deg, rgba(255, 149, 0, 0.1) 0%, var(--ios-background) 100%);
+  border-left: 4px solid var(--ios-orange);
+}
+
+/* iOS-Style Buttons */
+.btn {
+  border-radius: var(--ios-border-radius-small);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--ios-shadow-large);
+}
+
+/* Mobile responsive buttons */
+@media (max-width: 768px) {
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    min-height: 44px; /* iOS touch target size */
+  }
+  
+  .btn:hover {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    width: 100%; /* Full width on mobile */
+    margin-bottom: 10px;
+  }
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--ios-blue), var(--ios-indigo));
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, var(--ios-red), var(--ios-pink));
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.3);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--ios-green), var(--ios-teal));
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 199, 89, 0.3);
+}
+
+.btn-info {
+  background: linear-gradient(135deg, var(--ios-teal), var(--ios-blue));
+  color: white;
+  box-shadow: 0 4px 15px rgba(90, 200, 250, 0.3);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, var(--ios-orange), var(--ios-yellow));
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 149, 0, 0.3);
+}
+
+.btn-glass-ios {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: var(--ios-blur);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #1d1d1f;
+  box-shadow: var(--ios-shadow);
+}
+
+.btn-glass-ios:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #1d1d1f;
+}
+
+/* iOS Stats Cards */
+.stats-card {
+  background: var(--ios-background);
+  backdrop-filter: var(--ios-blur);
+  border-radius: var(--ios-border-radius-small);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--ios-shadow);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mobile responsive stats cards */
+@media (max-width: 768px) {
+  .stats-card {
+    padding: 1rem;
+  }
+  
+  .stats-number {
+    font-size: 2rem !important;
+  }
+  
+  .stats-label {
+    font-size: 0.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-card {
+    padding: 0.75rem;
+  }
+  
+  .stats-number {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .stats-label {
+    font-size: 0.7rem !important;
+  }
+}
+
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.stats-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: var(--ios-shadow-large);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ios-blue), var(--ios-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
+.stats-label {
+  color: var(--ios-gray);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+
+/* iOS Navigation */
+.navbar {
+  backdrop-filter: var(--ios-blur);
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 var(--ios-border-radius) var(--ios-border-radius);
+  padding: 1rem 2rem;
+}
+
+/* Mobile responsive navbar */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.75rem 1rem;
+    border-radius: 0;
+  }
+  
+  .navbar-brand {
+    font-size: 1.3rem !important;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+  
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1.1rem !important;
+  }
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #1d1d1f !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: var(--ios-border-radius-small);
+  margin: 0 0.25rem;
+  padding: 0.75rem 1rem !important;
+  color: #1d1d1f !important;
+}
+
+.nav-link:hover {
+  background: rgba(0, 122, 255, 0.1);
+  transform: translateY(-2px);
+  color: var(--ios-blue) !important;
+}
+
+/* Mobile responsive nav links */
+@media (max-width: 768px) {
+  .nav-link {
+    padding: 0.5rem 0.75rem !important;
+    margin: 0.1rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .nav-link:hover {
+    transform: none;
+  }
+  
+  .navbar-nav {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Responsive Grid Utilities */
+@media (max-width: 768px) {
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  
+  .col, .col-md-4, .col-md-6, .col-lg-4, .col-lg-6 {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Force mobile columns to stack properly */
+  .col-md-4, .col-md-6, .col-md-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Keep 2-column layout for stats on mobile */
+  .col-6 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+  
+  .col, .col-md-4, .col-md-6, .col-lg-4, .col-lg-6 {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Full width on very small screens */
+  .col-md-4, .col-md-6, .col-md-8, .col-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Container padding adjustment */
+  .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
+/* iOS Form Elements */
+.form-control {
+  border-radius: var(--ios-border-radius-small);
+  border: 1px solid var(--ios-gray4);
+  padding: 1rem 1.25rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: var(--ios-background);
+  backdrop-filter: var(--ios-blur);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: var(--ios-blue);
+  box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+  color: var(--ios-gray2);
+}
+
+.form-label {
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+}
+
+/* iOS Container */
+.container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--ios-border-radius);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  backdrop-filter: var(--ios-blur);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* iOS Status Indicators */
+.status-online {
+  color: var(--ios-green);
+}
+
+.status-offline {
+  color: var(--ios-red);
+}
+
+.status-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.online {
+  background: linear-gradient(45deg, var(--ios-green), var(--ios-teal));
+  box-shadow: 0 0 20px rgba(52, 199, 89, 0.5);
+}
+
+.status-indicator.offline {
+  background: linear-gradient(45deg, var(--ios-red), var(--ios-pink));
+  box-shadow: 0 0 20px rgba(255, 59, 48, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 199, 89, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 199, 89, 0);
+  }
+}
+
+/* iOS Alert Styles */
+.alert {
+  border-radius: var(--ios-border-radius-small);
+  border: none;
+  backdrop-filter: var(--ios-blur);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, rgba(255, 59, 48, 0.1), rgba(255, 45, 146, 0.1));
+  border: 1px solid rgba(255, 59, 48, 0.3);
+  color: var(--ios-red);
+}
+
+.alert-success {
+  background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(90, 200, 250, 0.1));
+  border: 1px solid rgba(52, 199, 89, 0.3);
+  color: var(--ios-green);
+}
+
+/* iOS Spinner */
+.spinner-border {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: currentColor;
+}

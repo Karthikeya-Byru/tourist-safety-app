@@ -1,19 +1,13 @@
 # Dependencies
-**/node_modules/
-**/package-lock.json
+node_modules/
+package-lock.json
 
 # Flutter app - exclude completely for now
 tourist_safety_app/
 
 # Flutter build artifacts
-**/build/
-**/.dart_tool/
-**/android/
-**/ios/
-**/linux/
-**/macos/
-**/web/
-**/windows/
+build/
+.dart_tool/
 
 # IDE files
 **/.vscode/
